@@ -44,6 +44,9 @@ public class Aluno extends Pessoa implements Serializable{
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "aluno")
     private List<Fatura> faturas;
 
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "aluno")
+    private List<Historico> historicos;
+
 	public String getMatricula() {
 		return matricula;
 	}
@@ -100,12 +103,22 @@ public class Aluno extends Pessoa implements Serializable{
 		this.faturas = faturas;
 	}
 
+	public List<Historico> getHistoricos() {
+		return historicos;
+	}
+
+	public void setHistoricos(List<Historico> historicos) {
+		this.historicos = historicos;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * result + ((etapa == null) ? 0 : etapa.hashCode());
 		result = prime * result + ((faturas == null) ? 0 : faturas.hashCode());
+		result = prime * result
+				+ ((historicos == null) ? 0 : historicos.hashCode());
 		result = prime * result
 				+ ((indicador1 == null) ? 0 : indicador1.hashCode());
 		result = prime * result
@@ -137,6 +150,11 @@ public class Aluno extends Pessoa implements Serializable{
 				return false;
 		} else if (!faturas.equals(other.faturas))
 			return false;
+		if (historicos == null) {
+			if (other.historicos != null)
+				return false;
+		} else if (!historicos.equals(other.historicos))
+			return false;
 		if (indicador1 == null) {
 			if (other.indicador1 != null)
 				return false;
@@ -164,10 +182,5 @@ public class Aluno extends Pessoa implements Serializable{
 			return false;
 		return true;
 	}
-    
-    
-    
-    
-
 	
 }

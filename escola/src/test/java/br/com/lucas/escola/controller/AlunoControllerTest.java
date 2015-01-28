@@ -1,6 +1,8 @@
 package br.com.lucas.escola.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -14,6 +16,7 @@ import br.com.lucas.escola.dao.Dao;
 import br.com.lucas.escola.model.Aluno;
 import br.com.lucas.escola.model.Cidade;
 import br.com.lucas.escola.model.Endereco;
+import br.com.lucas.escola.model.Historico;
 import br.com.lucas.escola.model.Uf;
 import br.com.lucas.escola.services.AlunoService;
 
@@ -66,6 +69,16 @@ public class AlunoControllerTest {
 		a.setNomemae("Fulana Pires Silva");
 		a.setGrauesc("Ensino Médio Completo");
 		a.setSexo('M');
+		
+		Historico h = new Historico();
+		h.setAluno(a);
+		h.setDataHistorico(new Date());
+		h.setDescricao("HUEUEHUEHUEHUE");
+
+		List<Historico> historicos = new ArrayList<Historico>();
+		historicos.add(h);
+		
+		a.setHistoricos(historicos);
 		
 		alunoService.persist(a);
 		

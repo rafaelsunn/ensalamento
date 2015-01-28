@@ -1,8 +1,16 @@
 package br.com.lucas.escola.controller;
 
+import javax.validation.Valid;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+
+import br.com.lucas.escola.model.Aluno;
+import br.com.lucas.escola.services.AlunoService;
 
 /**
  * 
@@ -23,25 +31,28 @@ public class AlunoController {
 //	private SalaDao salaDao;
 //	
 //	
-//	/**
-//	 * 
-//	 * @param aluno
-//	 * @return redirect to Lista de Salas Cadastradas
-//	 */
-//	@RequestMapping(value ="/cadastrar", method = RequestMethod.POST)
-//	public String adicionaAluno(@Valid Aluno aluno, BindingResult result) {
-//		if (result.hasErrors()) {
-//			return "aluno/cadastrar-aluno";
-//		} else {
-//			Integer id = aluno.getId();
-//			if (id == 0 || id == null) {
-//				alunoDao.salvar(aluno); 
-//			} else {
-//				alunoDao.atualizar(aluno);
-//			}
-//			return "home";	
-//		}
-//	}
+	@Autowired
+	private AlunoService alunoService;
+	
+	/**
+	 * 
+	 * @param aluno
+	 * @return redirect to Lista de Salas Cadastradas
+	 */
+	@RequestMapping(value ="/salvar", method = RequestMethod.POST)
+	public String adicionaAluno(@Valid Aluno aluno, BindingResult result) {
+		if (result.hasErrors()) {
+			return "aluno/cadastrar-aluno";
+		} else {
+			Integer id = aluno.getIdPessoa();
+			if (id == 0 || id == null) {
+				alunoService.persist(aluno);
+			} else {
+				alunoService.merge(aluno);
+			}
+			return "home";	
+		}
+	}
 //	
 //	/**
 //	 * 
@@ -55,14 +66,14 @@ public class AlunoController {
 //		return "aluno/lista-alunos";
 //	}
 //	
-//	/**
-//	 * 
-//	 * @return página de cadastrar um novo aluno
-//	 */
-//	@RequestMapping(value="/novo", method = RequestMethod.GET)
-//	public String form() {
-//		return "aluno/cadastrar-aluno";
-//	}
+	/**
+	 * 
+	 * @return página de cadastrar um novo aluno
+	 */
+	@RequestMapping(value="/novo", method = RequestMethod.GET)
+	public String form() {
+		return "aluno/cadastrar-aluno";
+	}
 //	
 //	
 //	/**

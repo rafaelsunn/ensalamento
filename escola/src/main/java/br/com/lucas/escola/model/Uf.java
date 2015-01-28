@@ -20,11 +20,14 @@ public class Uf implements Serializable{
 	private static final long serialVersionUID = -5421949359587649735L;
 
 	@Id
-	@Column(name = "SIGLA_UF")
+	@Column(name = "SIGLAUF")
 	private String siglaUf;
 	
 	@Column(name = "DESCRICAO")
 	private String descricao;
+	
+	@Column(name = "SIGLA_UF")
+	private String siglaUf2;
 
 	public String getSiglaUf() {
 		return siglaUf;
@@ -41,6 +44,14 @@ public class Uf implements Serializable{
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+	
+	public String getSiglaUf2() {
+		return siglaUf2;
+	}
+	
+	public void setSiglaUf2(String siglaUf2) {
+		this.siglaUf2 = siglaUf2;
+	}
 
 	@Override
 	public int hashCode() {
@@ -49,6 +60,8 @@ public class Uf implements Serializable{
 		result = prime * result
 				+ ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result + ((siglaUf == null) ? 0 : siglaUf.hashCode());
+		result = prime * result
+				+ ((siglaUf2 == null) ? 0 : siglaUf2.hashCode());
 		return result;
 	}
 
@@ -71,9 +84,14 @@ public class Uf implements Serializable{
 				return false;
 		} else if (!siglaUf.equals(other.siglaUf))
 			return false;
+		if (siglaUf2 == null) {
+			if (other.siglaUf2 != null)
+				return false;
+		} else if (!siglaUf2.equals(other.siglaUf2))
+			return false;
 		return true;
 	}
-	
+
 	
 	
 }

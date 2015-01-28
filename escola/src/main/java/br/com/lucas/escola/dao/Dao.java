@@ -19,13 +19,13 @@ public interface Dao<T> {
 	 * @param t
 	 */
 	 void persist(T t);
-	
-	/**
-	 * Atualiza a entidade passada.
-	 * @param t
-	 */
+	 
+	 /**
+	  * Atualiza a entidade passada
+	  * @param t
+	  */
 	 void merge(T t);
-
+	
 	/**
 	 * Deleta a entidade passada.
 	 * @param t

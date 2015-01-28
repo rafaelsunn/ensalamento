@@ -22,6 +22,7 @@ import br.com.lucas.escola.model.Cidade;
 import br.com.lucas.escola.model.Curso;
 import br.com.lucas.escola.model.DiaDaSemana;
 import br.com.lucas.escola.model.Endereco;
+import br.com.lucas.escola.model.Historico;
 import br.com.lucas.escola.model.Modulo;
 import br.com.lucas.escola.model.Turma;
 import br.com.lucas.escola.model.Uf;
@@ -76,6 +77,16 @@ public class TurmaControllerTest {
 		a.setSexo('M');
 		
 		alunos.add(a);
+		
+		Historico h = new Historico();
+		h.setAluno(a);
+		h.setDataHistorico(new Date());
+		h.setDescricao("HUEUEHUEHUEHUE");
+
+		List<Historico> historicos = new ArrayList<Historico>();
+		historicos.add(h);
+		
+		a.setHistoricos(historicos);
 		
 		//curso
 		

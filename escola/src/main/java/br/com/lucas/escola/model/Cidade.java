@@ -24,18 +24,30 @@ public class Cidade implements Serializable{
 
 	@Id
 	@GeneratedValue
-	@Column(name = "ID")
+	@Column(name = "COD_CIDADE")
 	private String idCidade;
 	
-	@ManyToOne
-	@JoinColumn(name = "ID_UF")
-	private Uf uf;
+	@Column(name = "SIGLAUF")
+	private Character siglaUf;
+	
+	@Column(name = "NOME")
+	private String nomeCidade;
+	
+	@Column(name = "CODIGO_MUNICIPIO")
+	private String codMunicipio;
+	
+	@Column(name = "ID")
+	private String id;
+	
+	@Column(name = "COD_MUN")
+	private String codMunicipio2;
 	
 	@Column(name = "DESCRICAO")
 	private String descricao;
 	
-	@Column(name = "COD_MUN")
-	private String codMunicipio;
+	@ManyToOne
+	@JoinColumn(name = "ID_UF")
+	private Uf uf;
 
 	public String getIdCidade() {
 		return idCidade;
@@ -45,20 +57,20 @@ public class Cidade implements Serializable{
 		this.idCidade = idCidade;
 	}
 
-	public Uf getUf() {
-		return uf;
+	public Character getSiglaUf() {
+		return siglaUf;
 	}
 
-	public void setUf(Uf uf) {
-		this.uf = uf;
+	public void setSiglaUf(Character siglaUf) {
+		this.siglaUf = siglaUf;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public String getNomeCidade() {
+		return nomeCidade;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setNomeCidade(String nomeCidade) {
+		this.nomeCidade = nomeCidade;
 	}
 
 	public String getCodMunicipio() {
@@ -69,6 +81,38 @@ public class Cidade implements Serializable{
 		this.codMunicipio = codMunicipio;
 	}
 
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	public String getCodMunicipio2() {
+		return codMunicipio2;
+	}
+
+	public void setCodMunicipio2(String codMunicipio2) {
+		this.codMunicipio2 = codMunicipio2;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public Uf getUf() {
+		return uf;
+	}
+
+	public void setUf(Uf uf) {
+		this.uf = uf;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -76,9 +120,15 @@ public class Cidade implements Serializable{
 		result = prime * result
 				+ ((codMunicipio == null) ? 0 : codMunicipio.hashCode());
 		result = prime * result
+				+ ((codMunicipio2 == null) ? 0 : codMunicipio2.hashCode());
+		result = prime * result
 				+ ((descricao == null) ? 0 : descricao.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result
 				+ ((idCidade == null) ? 0 : idCidade.hashCode());
+		result = prime * result
+				+ ((nomeCidade == null) ? 0 : nomeCidade.hashCode());
+		result = prime * result + ((siglaUf == null) ? 0 : siglaUf.hashCode());
 		result = prime * result + ((uf == null) ? 0 : uf.hashCode());
 		return result;
 	}
@@ -97,15 +147,35 @@ public class Cidade implements Serializable{
 				return false;
 		} else if (!codMunicipio.equals(other.codMunicipio))
 			return false;
+		if (codMunicipio2 == null) {
+			if (other.codMunicipio2 != null)
+				return false;
+		} else if (!codMunicipio2.equals(other.codMunicipio2))
+			return false;
 		if (descricao == null) {
 			if (other.descricao != null)
 				return false;
 		} else if (!descricao.equals(other.descricao))
 			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
 		if (idCidade == null) {
 			if (other.idCidade != null)
 				return false;
 		} else if (!idCidade.equals(other.idCidade))
+			return false;
+		if (nomeCidade == null) {
+			if (other.nomeCidade != null)
+				return false;
+		} else if (!nomeCidade.equals(other.nomeCidade))
+			return false;
+		if (siglaUf == null) {
+			if (other.siglaUf != null)
+				return false;
+		} else if (!siglaUf.equals(other.siglaUf))
 			return false;
 		if (uf == null) {
 			if (other.uf != null)
@@ -114,7 +184,4 @@ public class Cidade implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
-	
 }
