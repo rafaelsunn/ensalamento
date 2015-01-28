@@ -6,6 +6,8 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
@@ -46,6 +48,10 @@ public class Aluno extends Pessoa implements Serializable{
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "aluno")
     private List<Historico> historicos;
+    
+    @Enumerated(EnumType.STRING)
+    @Column(name = "VEICULO_PUBLICACAO")
+    private VeiculoPublicacao veiculoDePublicaocao;
 
 	public String getMatricula() {
 		return matricula;
@@ -111,6 +117,14 @@ public class Aluno extends Pessoa implements Serializable{
 		this.historicos = historicos;
 	}
 
+	public VeiculoPublicacao getVeiculoDePublicaocao() {
+		return veiculoDePublicaocao;
+	}
+
+	public void setVeiculoDePublicaocao(VeiculoPublicacao veiculoDePublicaocao) {
+		this.veiculoDePublicaocao = veiculoDePublicaocao;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -128,6 +142,10 @@ public class Aluno extends Pessoa implements Serializable{
 		result = prime * result
 				+ ((profissao == null) ? 0 : profissao.hashCode());
 		result = prime * result + ((turmas == null) ? 0 : turmas.hashCode());
+		result = prime
+				* result
+				+ ((veiculoDePublicaocao == null) ? 0 : veiculoDePublicaocao
+						.hashCode());
 		return result;
 	}
 
@@ -180,7 +198,11 @@ public class Aluno extends Pessoa implements Serializable{
 				return false;
 		} else if (!turmas.equals(other.turmas))
 			return false;
+		if (veiculoDePublicaocao != other.veiculoDePublicaocao)
+			return false;
 		return true;
 	}
-	
+    
+    
+
 }

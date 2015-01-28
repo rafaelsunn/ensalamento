@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import br.com.lucas.escola.dao.CidadeDao;
 import br.com.lucas.escola.dao.UfDao;
 import br.com.lucas.escola.model.Funcionario;
+import br.com.lucas.escola.services.FuncionarioService;
 
 /**
  * 
@@ -28,6 +29,9 @@ public class FuncionarioController {
 	@Autowired
 	private UfDao ufDao;
 	
+	@Autowired
+	private FuncionarioService funcionarioService;
+	
 	@RequestMapping(value = "/novo", method = RequestMethod.GET)
 	public String novo(Model model) {
 		
@@ -39,7 +43,12 @@ public class FuncionarioController {
 	
 	@RequestMapping(value = "/salvar", method = RequestMethod.GET)
 	public String save(@Valid Funcionario funcionaro) {
-		return null;
+		/*
+		 * TODO Validation Bean,
+		 * Mensagem: "Funcionário cadastrado com sucesso" na tela.
+		 */
+		funcionarioService.persist(funcionaro);
+		return "home";
 	}
 	
 }

@@ -26,11 +26,11 @@
 							<label class="col-sm-2 control-label">Sexo</label>
 							<div class="col-sm-4">
 								<label class="radio-inline">
-									<input type="radio" name="sexo" id="feminino" value="FEMININO"> Feminino
+									<input type="radio" name="sexo" id="feminino" value="F"> Feminino
 								</label>
 
 								<label class="radio-inline">
-									<input type="radio" name="sexo" id="masculino" value="MASCULINO"> Masculino
+									<input type="radio" name="sexo" id="masculino" value="M"> Masculino
 								</label>
 							</div>
 						</div>
