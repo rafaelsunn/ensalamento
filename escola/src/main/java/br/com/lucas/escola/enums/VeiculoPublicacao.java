@@ -1,4 +1,4 @@
-package br.com.lucas.escola.model;
+package br.com.lucas.escola.enums;
 
 import java.util.EnumSet;
 import java.util.Set;

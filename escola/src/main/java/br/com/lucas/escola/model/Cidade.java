@@ -23,12 +23,11 @@ public class Cidade implements Serializable{
 	private static final long serialVersionUID = -3775795490089212176L;
 
 	@Id
-	@GeneratedValue
 	@Column(name = "COD_CIDADE")
-	private String idCidade;
+	private Integer idCidade;
 	
 	@Column(name = "SIGLAUF")
-	private Character siglaUf;
+	private String siglaUf;
 	
 	@Column(name = "NOME")
 	private String nomeCidade;
@@ -49,19 +48,19 @@ public class Cidade implements Serializable{
 	@JoinColumn(name = "ID_UF")
 	private Uf uf;
 
-	public String getIdCidade() {
+	public Integer getIdCidade() {
 		return idCidade;
 	}
 
-	public void setIdCidade(String idCidade) {
+	public void setIdCidade(Integer idCidade) {
 		this.idCidade = idCidade;
 	}
 
-	public Character getSiglaUf() {
+	public String getSiglaUf() {
 		return siglaUf;
 	}
 
-	public void setSiglaUf(Character siglaUf) {
+	public void setSiglaUf(String siglaUf) {
 		this.siglaUf = siglaUf;
 	}
 

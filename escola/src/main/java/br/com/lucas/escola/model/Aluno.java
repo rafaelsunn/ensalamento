@@ -16,6 +16,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.PrimaryKeyJoinColumn;
 import javax.persistence.Table;
 
+import br.com.lucas.escola.enums.VeiculoPublicacao;
+
 /**
  * 
  * @author Lucas Moreira
