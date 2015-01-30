@@ -12,19 +12,20 @@
 			<div class="panel-body">
 				
 				<form action="${salvar}" class="form-horizontal" method="post">
+				<input type="hidden" value="${cargo.idCargo}" />
 					<fieldset>
 						<legend>Cadastro de Cargo</legend>
 						<div class="form-group">
 							<label for="descricao" class="col-sm-2 control-label">Descrição</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control" id="descricao" name="descricao">
+								<input type="text" class="form-control" id="descricao" name="descricao" value="${cargo.descricao}">
 							</div>
 						</div>
 						
 						<div class="form-group">
 							<label for="funcao" class="col-sm-2 control-label">Função</label>
 							<div class="col-sm-4">
-								<input type="text" class="form-control" id="funcao" name="funcao">
+								<input type="text" class="form-control" id="funcao" name="funcao" value="${cargo.funcao}">
 							</div>
 						</div>												
 					</fieldset>

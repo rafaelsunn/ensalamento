@@ -48,7 +48,7 @@
 						<a href="#">Logado como: Fulano</a>
 					</li>
 					<li>
-						<a href="#">Sair</a>
+						<a href="<%=request.getContextPath()%>/j_spring_security_logout">Sair</a>
 					</li>                  
                 
 

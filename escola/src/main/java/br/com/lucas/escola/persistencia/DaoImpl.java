@@ -1,11 +1,11 @@
 package br.com.lucas.escola.persistencia;
 
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-
-import org.springframework.stereotype.Repository;
 
 import br.com.lucas.escola.dao.Dao;
 
@@ -22,6 +22,14 @@ public class DaoImpl<T> implements Dao<T>{
 	@PersistenceContext
 	private EntityManager manager;
 	
+	private Class<T> classe;
+	
+	public DaoImpl() {
+		Type t = getClass().getGenericSuperclass();
+		ParameterizedType pt = (ParameterizedType) t;
+		classe = (Class) pt.getActualTypeArguments()[0];
+	}
+	
 	public void persist(T t) {
 		manager.persist(t);
 	}
@@ -35,11 +43,11 @@ public class DaoImpl<T> implements Dao<T>{
 	}
 
 	public List<T> getAll() {
-		return (List<T>) manager.createQuery("FROM " + getClass().getName());
+		return manager.createQuery("FROM " + classe.getSimpleName()).getResultList();
 	}
 
 	public T getPorId(Integer id) {
-		return (T) manager.find(getClass(), id);
+		return (T) manager.find(classe, id);
 	}
 
 }

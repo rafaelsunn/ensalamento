@@ -37,7 +37,7 @@ public interface Dao<T> {
 	 * Retorona todos os registros da entidade passada.
 	 * @return List
 	 */
-	List<T> getAll();
+	 public List<T> getAll();
 	
 	/**
 	 * Retorna uma entidade por id

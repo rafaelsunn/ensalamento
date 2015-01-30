@@ -45,7 +45,7 @@ public class AlunoControllerTest {
 		Cidade cidade = new Cidade();
 		cidade.setCodMunicipio("123123");
 		cidade.setDescricao("Brasília");
-		cidade.setIdCidade("1234");
+		cidade.setIdCidade(1234);
 		cidade.setUf(uf);
 		
 		Endereco endereco = new Endereco();
